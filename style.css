@@ -1,0 +1,146 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --muted-text-color: #555555;
+  --accent-color: #0050c8;
+  --accent-hover-bg: rgba(0, 80, 200, 0.12);
+  --border-color: #a9a9a9;
+  --section-bg: #f7f9fc;
+  --font-family: Arial, sans-serif;
+  --font-size: 14px;
+  --cols: 4;
+}
+
+body.dark-theme {
+  --bg-color: #1e1e1e;
+  --text-color: #81e973;
+  --accent-color: #79bbf8;
+  --border-color: #444444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  margin: 0;
+  padding: 20px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  overflow-x: hidden;
+}
+
+.bookmarks-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  gap: 20px;
+  min-height: 100vh;
+}
+
+/* "По содержимому": ячейки имеют естественную высоту,
+   каждый ряд — по высоте самой высокой ячейки в нём */
+.bookmarks-grid.align-start {
+  align-items: start;
+  grid-auto-rows: auto;
+}
+
+/* "Растянуть по высоте": высота каждого ряда определяется самой высокой
+   ячейкой в этом ряду (grid-auto-rows: auto), а остальные ячейки ряда
+   растягиваются до этой высоты (align-items: stretch) */
+.bookmarks-grid.align-stretch {
+  align-items: stretch;
+  grid-auto-rows: auto;
+}
+
+/* При растягивании ячейка не должна выходить за пределы строки */
+.bookmarks-grid.align-stretch .bookmark-section {
+  min-height: 0;
+}
+
+/* Список занимает оставшуюся высоту ячейки; min-height: 0 позволяет
+   ему сжиматься, а длинный контент прокручивается внутри ячейки, не
+   увеличивая её высоту и не ломая равенство ячеек */
+.bookmarks-grid.align-stretch .bookmark-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.bookmark-section {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 15px;
+  background-color: var(--section-bg);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-width: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Скруглённые рамки ячеек (по умолчанию) */
+.bookmarks-grid.cell-rounded .bookmark-section {
+  border-radius: 8px;
+}
+
+/* Прямые рамки ячеек */
+.bookmarks-grid.cell-square .bookmark-section {
+  border-radius: 0;
+}
+
+body.dark-theme .bookmark-section {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.section-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 5px;
+  font-size: 1.1em;
+}
+
+.bookmark-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bookmark-item {
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookmark-item a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.bookmark-item a {
+  display: block;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.bookmark-item a:hover {
+  text-decoration: none;
+  background-color: var(--accent-hover-bg);
+}
+
+body.dark-theme .bookmark-item a:hover {
+  background-color: rgba(77, 163, 255, 0.2);
+}
+
+/* Options page specific styles */
+.options-container {
+  max-width: 600px;
+  margin: 0 auto;
+}

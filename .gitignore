@@ -25,3 +25,7 @@ desktop.ini
 # Environment
 .env
 .env.local
+
+#manual
+plans/
+scripts/generate_icons.ps1

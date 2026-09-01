@@ -1,4 +1,4 @@
-# Bookmarks Grid View
+# Chrome Bookmarks Grid View
 
 A Chrome extension that displays all your browser bookmarks in a clean, customizable grid layout with folder-based grouping.
 
@@ -21,7 +21,7 @@ Instead of navigating through the standard Chrome bookmark tree, **Bookmarks Gri
 
 1. Clone or download this repository:
    ```
-   git clone https://github.com/basilmatveev-lang/first.git
+   git clone https://github.com/basilmatveev-lang/ai_chrome_ext_bookamrk_grid.git
    ```
 2. Open Chrome and navigate to `chrome://extensions/`.
 3. Enable **Developer mode** (toggle in the top-right corner).
